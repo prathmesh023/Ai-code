@@ -1,0 +1,127 @@
+<!--zoom meeting login screen code by ai(black box)-->
+<!--by using html ang javascript-->
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Zoom Meeting Info</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+    body {
+      font-family: "Inter", sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-[#f5f5f5] min-h-screen flex flex-col justify-between">
+  <main
+    class="flex flex-col md:flex-row justify-center items-center flex-grow px-4 md:px-20 py-12 gap-12"
+  >
+    <section
+      class="bg-[#1f1f1f] rounded-lg w-full max-w-xl aspect-video flex justify-center items-center relative"
+    >
+      <img
+        alt="User icon silhouette in gray on dark background"
+        class="w-28 h-28 rounded-md"
+        height="120"
+        src="https://storage.googleapis.com/a1aa/image/0671cf28-0b00-44d0-7195-8e8a6175a49f.jpg"
+        width="120"
+      />
+      <div
+        class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-8 bg-[#2a2a2a] px-4 py-1 rounded-md text-xs text-white select-none"
+      >
+        <div class="flex flex-col items-center gap-1">
+          <i class="fas fa-microphone-slash text-sm"></i>
+          <span>Unmute</span>
+        </div>
+        <div class="flex flex-col items-center gap-1">
+          <i class="fas fa-video-slash text-sm"></i>
+          <span>Start Video</span>
+        </div>
+      </div>
+    </section>
+    <section class="w-full max-w-sm text-gray-800">
+      <h2 class="font-semibold text-lg mb-4">Enter Meeting Info</h2>
+      <form id="joinForm">
+        <label class="block text-xs mb-1" for="name">Your Name</label>
+        <input
+          class="w-full border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+          id="name"
+          name="name"
+          type="text"
+          value=""
+          required
+        />
+        <div class="mt-2 mb-4 text-[9px] text-gray-400">
+          <label
+            class="inline-flex items-center gap-1 cursor-pointer select-none"
+            ><input class="w-3 h-3" type="checkbox" id="remember" />
+            <span>Remember my name for future meetings</span></label
+          >
+        </div>
+        <button
+          class="w-full bg-[#0d8ddb] text-white text-sm font-semibold rounded-md py-2 hover:bg-[#0b7cc0] transition-colors"
+          type="submit"
+        >
+          Join
+        </button>
+      </form>
+      <p class="mt-3 text-[10px] text-gray-500 leading-tight">
+        By clicking "Join", you agree to our
+        <a class="text-blue-600 underline" href="#">Terms of Service</a> and
+        <a class="text-blue-600 underline" href="#">Privacy Statement</a>.
+      </p>
+      <p class="mt-2 text-[10px] text-gray-500 leading-tight">
+        Zoom is protected by reCAPTCHA and their
+        <a class="text-blue-600 underline" href="#">Privacy Policy</a> and
+        <a class="text-blue-600 underline" href="#">Terms of Service</a> apply.
+      </p>
+    </section>
+  </main>
+  <footer class="text-center text-[10px] text-gray-400 py-3 select-none">
+    © 2025 Zoom Communications, Inc. All rights reserved.
+    <a class="underline text-gray-400 hover:text-gray-600" href="#"
+      >Privacy &amp; Legal Policies</a
+    >
+    |
+    <a class="underline text-gray-400 hover:text-gray-600" href="#">Send Report</a>
+  </footer>
+
+  <script>
+    // JavaScript to handle form submission
+    document.getElementById("joinForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const remember = document.getElementById("remember").checked;
+
+      if (!name) {
+        alert("Please enter your name.");
+        return;
+      }
+
+      if (remember) {
+        localStorage.setItem("zoomUserName", name);
+      } else {
+        localStorage.removeItem("zoomUserName");
+      }
+
+      alert(`Joining meeting as: ${name}`);
+      // Here you can add actual join meeting logic or redirect
+    });
+
+    // On page load, populate name if saved
+    window.addEventListener("load", () => {
+      const savedName = localStorage.getItem("zoomUserName");
+      if (savedName) {
+        document.getElementById("name").value = savedName;
+        document.getElementById("remember").checked = true;
+      }
+    });
+  </script>
+</body>
+</html>
