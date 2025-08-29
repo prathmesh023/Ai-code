@@ -1,0 +1,92 @@
+<!--Instagram login Page-->
+<!--By using Ai (html, javascript)-->
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Instagram Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .instagram-logo {
+      font-family: 'Grand Hotel', cursive;
+    }
+  </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col justify-center items-center px-6">
+  <div class="w-full max-w-xs">
+    <div class="text-center mb-8 mt-2 text-gray-400 text-sm select-none">
+      English (India) <i class="fas fa-chevron-down"></i>
+    </div>
+    <h1 class="instagram-logo text-4xl text-center mb-6 text-black select-none">Instagram</h1>
+    <form id="loginForm" class="flex flex-col gap-3" onsubmit="handleLogin(event)">
+      <input
+        id="usernameInput"
+        type="text"
+        placeholder="Phone number, email or username"
+        class="bg-gray-100 text-gray-400 text-sm rounded border border-gray-200 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+        required
+      />
+      <div class="relative">
+        <input
+          id="passwordInput"
+          type="password"
+          placeholder="Password"
+          class="bg-gray-100 text-gray-400 text-sm rounded border border-gray-200 px-3 py-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-500"
+          required
+        />
+        <i id="togglePassword" class="far fa-eye absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"></i>
+      </div>
+      <button
+        type="submit"
+        class="bg-blue-500 text-white font-semibold text-sm rounded py-2 mt-1"
+      >
+        Log In
+      </button>
+    </form>
+    <p class="text-center text-xs text-gray-500 mt-3">
+      Forgot your login details? <strong>Get help logging in.</strong>
+    </p>
+    <div class="flex items-center my-3">
+      <hr class="border-gray-300 flex-grow" />
+      <span class="text-xs text-gray-400 mx-2">OR</span>
+      <hr class="border-gray-300 flex-grow" />
+    </div>
+    <p class="text-center text-sm text-blue-600 font-semibold cursor-pointer select-none" onclick="alert('Facebook login clicked')">
+      Log in with Facebook
+    </p>
+    <p class="text-center text-xs text-gray-400 mt-20 select-none">
+      Dont have an account? <strong>Sign up.</strong>
+    </p>
+  </div>
+
+  <script>
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('passwordInput');
+
+    togglePassword.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      togglePassword.classList.toggle('fa-eye-slash');
+    });
+
+    function handleLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('usernameInput').value;
+      const password = document.getElementById('passwordInput').value;
+      alert(`Logging in with\nUsername: ${username}\nPassword: ${password}`);
+    }
+  </script>
+</body>
+</html>
